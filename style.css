@@ -1,3 +1,15 @@
-h1 {
-  color: green;
+:root {
+  --background: #171723;
+  --background-content: #505671;
+  --text: #505671;
+  --white: #FFFFFF;
 }
+
+body {
+  background-color: var(--background);
+}
+
+h1 {
+  color: var(--white);
+}
+
