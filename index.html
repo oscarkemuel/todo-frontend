@@ -4,11 +4,57 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="./scripts.js"></script>
   <title>TODO LIST</title>
 </head>
 <body>
-  <h1>TODO LIST</h1>
+  
+  <div class="container">
+    <h1>TODO LIST</h1>
+
+    <div class="content">
+      <form>
+        <div class="controls">
+          <div class="control">
+            <label for="tag">Nome</label>
+            <input type="text" placeholder="Insira a tarefa" id="name" name="name">
+          </div>
+    
+          <div class="control">
+            <label for="tag">Tag</label>
+            <input type="text" placeholder="Insira a tag" id="tag" name="tag">
+          </div>
+        </div>
+
+        <button>ADD</button>
+      </form>
+  
+      <div class="todos">
+        <button class="todo" onclick="console.log('oi')">
+          <div class="done checked"></div>
+          <p class="name">Ir Pedalar</p>
+        </button>
+  
+        <button class="todo">
+          <div class="done"></div>
+          <p class="name">Fazer trabalho</p>
+        </button>
+  
+        <button class="todo">
+          <div class="done checked"></div>
+          <p class="name">Jogar o lixo</p>
+        </button>
+  
+        <button class="todo">
+          <div class="done"></div>
+          <p class="name">Fazer um bolo</p>
+        </button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

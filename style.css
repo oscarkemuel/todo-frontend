@@ -1,15 +1,128 @@
 :root {
   --background: #171723;
-  --background-content: #505671;
-  --text: #505671;
+  --background-content: #24283E;
+  --border-color: #35384b;
+  --text: #88898d;
+  --red: #E83E5A;
+  --blue: #2760E5;
   --white: #FFFFFF;
+  --green: #00FFBB;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	border: none;
+	cursor: pointer;
+	outline: inherit;
 }
 
 body {
   background-color: var(--background);
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
   color: var(--white);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  gap: 1rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.controls {
+  width: 100%;
+}
+
+.control {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.control label {
+  font-size: 12px;
+  color: var(--text);
+}
+
+form input, form button {
+  border: none;
+}
+
+form input {
+  width: -webkit-fill-available;
+  background-color: var(--background-content);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1rem;
+  color: var(--white);
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+form button {
+  width: 100%;
+  margin: 1rem 0 0.5rem 0;
+  background-color: var(--blue);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.todos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.todos .todo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--background-content);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+}
+
+.todos .todo:nth-child(1){
+  border-radius: 5px 5px 0 0;
+}
+
+.todos .todo:last-child{
+  border-radius: 0 0 5px 5px;
+}
+
+.todos .todo .done {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: var(--text);
+  border: 1px solid var(--border-color);
+}
+
+.todos .todo .checked {
+  background-color: var(--green);
+}
+
+.todos .todo .name {
+  color: var(--white)
+}
