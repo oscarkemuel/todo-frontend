@@ -1,6 +1,7 @@
 :root {
   --background: #171723;
   --background-content: #24283E;
+  --button-hover: #333854;
   --border-color: #35384b;
   --text: #88898d;
   --red: #E83E5A;
@@ -92,7 +93,6 @@ form button {
   display: flex;
   flex-direction: column;
 }
-
 .todos .todo {
   display: flex;
   align-items: center;
@@ -100,7 +100,25 @@ form button {
   width: 100%;
   background-color: var(--background-content);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
+  /*padding: 0.5rem 1rem;*/
+}
+
+.todos .todo .left-items{
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.todos .todo .right-items{
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.todo:hover {
+  background-color: var(--button-hover) ;
 }
 
 .todos .todo:nth-child(1){
@@ -112,11 +130,13 @@ form button {
 }
 
 .todos .todo .done {
+  margin-left: 8px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   color: var(--text);
   border: 1px solid var(--border-color);
+  background-color: transparent;
 }
 
 .todos .todo .checked {
@@ -125,4 +145,43 @@ form button {
 
 .todos .todo .name {
   color: var(--white)
+}
+
+
+.todos .todo .tag{
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  margin-left: 40%;
+}
+
+.delete{
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 3px;
+  background-color: transparent;
+}
+
+.delete img{
+  max-width: 100%;
+  max-height: 100%;
+  filter: invert(100%);
+}
+
+
+.todos .todo .tag{
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+}
+.tag p{
+  margin:4px;
+  color: var(--white)
+
 }
