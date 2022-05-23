@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="./js/scripts.js"></script>
+  <title>TODO LIST</title>
+</head>
+<body>
+
+<div class="container">
+  <h1>Registration</h1>
+  <div class="content">
+    <form class="user-data-form">
+      <div class="controls">
+        <div class="control">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Digite seu nome" maxlength="32" minlength="1" required>
+        </div>
+
+        <div class="control">
+          <label for="surnames">Surnames</label>
+          <input type="text" id="surnames" name="surnames" placeholder="Digite seu sobrenome" maxlength="64" minlength="1" required>
+          </label>
+        </div>
+
+        <div class="control">
+          <label for="username">Username</label>
+          <input type="text" placeholder="Digite seu nome de usuário" id="username" name="username">
+        </div>
+
+        <div class="control">
+          <label for="birthdate">Birth date</label>
+          <input type="date" id="birthdate" name="birthdate" placeholder="Insira sua data de nascimento" required>
+        </div>
+
+        <div class="control">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu sobrenome" required>
+        </div>
+
+        <div class="control">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="Digite seu telephone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+        </div>
+
+        <div class="control">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Insira sua senha" id="password" name="password" maxlength="20" minlength="5">
+        </div>
+
+        <div class="control">
+          <label for="confirm_password">Password</label>
+          <input type="password" placeholder="Insira novamente sua senha" id="confirm_password" name="confirm_password" maxlength="20" minlength="5">
+        </div>
+
+      </div>
+
+      <input type="submit" value="Enviar" class="submit-btn" />
+    </form>
+  </div>
+</div>
+<script src="./js/confirmPassword.js"></script>
+</body>
+</html>

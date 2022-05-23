@@ -71,7 +71,7 @@ form input, form button {
 }
 
 form input {
-  width: -webkit-fill-available;
+  width: available;
   background-color: var(--background-content);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 1rem;
@@ -80,7 +80,7 @@ form input {
   font-size: 16px;
 }
 
-form button {
+.submit-btn {
   width: 100%;
   margin: 1rem 0 0.5rem 0;
   background-color: var(--blue);
@@ -117,7 +117,6 @@ form button {
   align-items: center;
   gap: 1rem;
 }
-
 
 .todo:hover {
   background-color: var(--button-hover) ;
@@ -186,4 +185,25 @@ form button {
   margin:4px;
   color: var(--white)
 
+}
+.user-msg{
+  color: var(--text)
+}
+#register-link{
+  text-decoration: none;
+}
+#register-link:hover{
+  cursor: pointer;
+  color: var(--white);
+}
+
+.user-data-form{
+  width: 75%;
+}
+
+#birthdate:valid{
+  color: var(--white);
+}
+#birthdate:invalid{
+  color: var(--text);
 }
