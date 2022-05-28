@@ -11,6 +11,11 @@
   --inversion: 100%;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 button, input[type="submit"], input[type="reset"] {
 	border: none;
 	cursor: pointer;
@@ -22,8 +27,40 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+header {
+  background-color: var(--background-content);
+  color: var(--mainText);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav ul li {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+header a {
+  color: var(--mainText);
+  text-decoration: none;
+}
+
+header a:hover {
+  color: var(--softText);
+}
+
+
 h1 {
   color: var(--mainText);
+  margin: 1rem 0;
 }
 
 .container {
@@ -38,6 +75,7 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 1rem;
   width: 100%;
   max-width: 600px;
   gap: 1rem;
@@ -103,6 +141,7 @@ form input {
   width: 100%;
   background-color: var(--background-content);
   border-bottom: 1px solid var(--border-color);
+  padding: .5rem;
   /*padding: 0.5rem 1rem;*/
 }
 
