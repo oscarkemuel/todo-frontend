@@ -137,20 +137,24 @@ form input {
 .todos .todo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   width: 100%;
   background-color: var(--background-content);
   border-bottom: 1px solid var(--border-color);
-  padding: .5rem;
+  padding: 1rem;
   /*padding: 0.5rem 1rem;*/
 }
 
 
 .todos .todo .half-items{
-  flex-basis: 50%;
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.todos .todo .half-items .tag p {
+  white-space: nowrap;
 }
 
 .todo:hover {
@@ -194,8 +198,8 @@ form input {
 }
 
 .delete img{
-  max-width: 100%;
-  max-height: 100%;
+  width: 25px;
+  height: 25px;
   filter: invert(var(--inversion));
 }
 
@@ -207,7 +211,6 @@ form input {
   padding: 5px;
   border: 1px solid var(--mainText);
   border-radius: 5px;
-  margin-left: 40%;
 }
 
 .tag p{
@@ -226,8 +229,24 @@ form input {
   color: var(--mainText);
 }
 
-.user-data-form{
+.user-data-form-login {
   width: 75%;
+}
+
+.user-data-form-register .controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .user-data-form-register .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .user-data-form-login {
+    width: 100%;
+  }
 }
 
 #birthdate:valid{
@@ -238,27 +257,29 @@ form input {
 }
 
 
-@media (max-width: 510px ) {
+@media (max-width: 600px ) {
   .todos .todo .half-items{
-    flex-basis: 100%;
+    width: 100%;
+    flex-direction: column;
   }
 
-  .donechecked{
-    margin-left: auto;
-    margin-right:auto;
+  .todo-infos{
+    flex-direction: row !important;
   }
 
-  .half-items p{
-    margin-top:0.2em;
-    margin-bottom: 0.2em;
-  }
   .todos .todo{
-    flex-wrap: wrap;
-    gap: 0;
-
+    flex-direction: column;
   }
+
   .todos .todo .tag{
-    padding: 2px;
-    margin-bottom:4px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .todos .delete {
+    width: 100%;
+    border: 1px solid var(--mainText);
+    border-radius: 5px;
+    padding: 5px;
   }
 }
