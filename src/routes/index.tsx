@@ -7,13 +7,11 @@ import { Todo } from "../pages/Todo";
 
 const AppRoutes = () => {
   return(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Todo />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Todo />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   )
 }
 
