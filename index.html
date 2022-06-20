@@ -1,104 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>TODO LIST</title>
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <div>
-            <a href="index.html">TODO</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="login.html">Sair</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <h1>TODO LIST</h1>
-    
-    <div class="content">
-        <form>
-            <div class="controls">
-                <div class="control">
-                    <label for="name">Nome</label>
-                    <input type="text" placeholder="Insira a tarefa" id="name" name="name">
-                </div>
-
-                <div class="control">
-                    <label for="tag">Tag</label>
-                    <input type="text" placeholder="Insira a tag" id="tag" name="tag">
-                </div>
-            </div>
-
-            <input type="submit" value="ADD" class="submit-btn"/>
-        </form>
-
-        <div class="todos">
-            <div class="todo">
-                <div class="half-items todo-infos">
-                    <button class="done checked"></button>
-                    <p class="name">Ir Pedalar</p>
-                </div>
-                <div class="half-items">
-                    <div class="tag">
-                        <p> Tag name </p>
-                    </div>
-                    <button class="delete"><img src="assets/images/delete-button.svg" alt="delete"></button>
-                </div>
-            </div>
-
-
-            <div class="todo">
-                <div class="half-items todo-infos">
-                    <button class="done"></button>
-                    <p class="name">Fazer trabalho</p>
-                </div>
-                <div class="half-items">
-                    <div class="tag">
-                        <p> Tag name </p>
-                    </div>
-                    <button class="delete"><img src="assets/images/delete-button.svg" alt="delete"></button>
-                </div>
-            </div>
-
-            <div class="todo">
-                <div class="half-items todo-infos">
-                    <button class="done checked"></button>
-                    <p class="name">Jogar o lixo</p>
-                </div>
-                <div class="half-items">
-                    <div class="tag">
-                        <p> Tag name </p>
-                    </div>
-                    <button class="delete"><img src="assets/images/delete-button.svg" alt="delete"></button>
-                </div>
-            </div>
-
-            <div class="todo">
-                <div class="half-items todo-infos">
-                    <button class="done"></button>
-                    <p class="name">Fazer um bolo</p>
-                </div>
-                <div class="half-items">
-                    <div class="tag">
-                        <p> Tag name </p>
-                    </div>
-                    <button class="delete"><img src="assets/images/delete-button.svg" alt="delete"></button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
