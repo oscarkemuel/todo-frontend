@@ -1,6 +1,34 @@
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { api } from "../../services/api";
 
 export function Register() {
+  // const navigate = useNavigate();
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    // api
+    //   .post("/user", data)
+    //   .then((response) => {
+    //     navigate('/')
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     navigate('/login')
+    //   });
+
+    console.log(data);
+  }
+
   return (
     <div className="container">
       <Header />
@@ -8,7 +36,7 @@ export function Register() {
       <h1>Registration</h1>
 
       <div className="content">
-        <form className="user-data-form-register">
+        <form className="user-data-form-register" onSubmit={handleSubmit}>
           <div className="controls">
             <div className="control">
               <label>Name</label>
@@ -24,42 +52,6 @@ export function Register() {
             </div>
 
             <div className="control">
-              <label>Surnames</label>
-              <input
-                type="text"
-                id="surnames"
-                name="surnames"
-                placeholder="Write your surname"
-                maxLength={64}
-                minLength={1}
-                required
-              />
-            </div>
-
-            <div className="control">
-              <label>Username</label>
-              <input
-                type="text"
-                placeholder="Write your username"
-                id="username"
-                name="username"
-                maxLength={20}
-                minLength={5}
-                required
-              />
-            </div>
-
-            <div className="control">
-              <label>Birth date</label>
-              <input
-                type="date"
-                id="birthdate"
-                name="birthdate"
-                placeholder="Write your birth date"
-              />
-            </div>
-
-            <div className="control">
               <label>Email</label>
               <input
                 type="email"
@@ -67,17 +59,6 @@ export function Register() {
                 name="email"
                 placeholder="Write your email"
                 required
-              />
-            </div>
-
-            <div className="control">
-              <label>Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Write your telephone"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               />
             </div>
 
@@ -95,7 +76,7 @@ export function Register() {
             </div>
 
             <div className="control">
-              <label>Password</label>
+              <label>Confirm your Password</label>
               <input
                 type="password"
                 placeholder="Confirm your pasword"
@@ -108,7 +89,9 @@ export function Register() {
             </div>
           </div>
 
-          <input type="submit" value="Send" className="submit-btn" />
+          <button type="submit" className="submit-btn">
+            Send
+          </button>
         </form>
       </div>
     </div>
