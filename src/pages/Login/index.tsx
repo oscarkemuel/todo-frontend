@@ -1,7 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { api } from "../../services/api";
 
 export function Login() {
+  // const navigate = useNavigate();
+  
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    // api.post("/user/login", data).then((response) => {
+    //   console.log(response);
+    //   navigate('/');
+    // }).catch((error) => {
+    //   console.log(error);
+    // });
+
+    console.log(data);
+  }
+
   return (
     <div className="container">
       <Header />
@@ -9,17 +32,15 @@ export function Login() {
       <h1>Log in</h1>
 
       <div className="content">
-        <form className="user-data-form-login">
+        <form className="user-data-form-login" onSubmit={handleSubmit}>
           <div className="controls">
             <div className="control">
-              <label>Username</label>
+              <label>Email</label>
               <input
-                type="text"
-                placeholder="Write your username"
-                id="username"
-                name="username"
-                maxLength={20}
-                minLength={5}
+                type="email"
+                placeholder="Write your email"
+                id="email"
+                name="email"
                 required
               />
             </div>
