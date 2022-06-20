@@ -1,42 +1,285 @@
-.App {
-  text-align: center;
+:root {
+  --background: #171723;
+  --background-content: #24283E;
+  --button-hover: #333854;
+  --border-color: #35384b;
+  --softText: #88898d;
+  --red: #E83E5A;
+  --blue: #2760E5;
+  --mainText: #FFFFFF;
+  --green: #00FFBB;
+  --inversion: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button, input[type="submit"], input[type="reset"] {
+	border: none;
+	cursor: pointer;
+	outline: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: var(--background);
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  background-color: var(--background-content);
+  color: var(--mainText);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav ul li {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+header a {
+  color: var(--mainText);
+  text-decoration: none;
+}
+
+header a:hover {
+  color: var(--softText);
+}
+
+
+h1 {
+  color: var(--mainText);
+  margin: 1rem 0;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  gap: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.controls {
+  width: 100%;
+}
+
+.control {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.control label {
+  font-size: 12px;
+  color: var(--softText);
+}
+
+form input, form button {
+  border: none;
+}
+
+form input {
+  width: available;
+  background-color: var(--background-content);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1rem;
+  color: var(--mainText);
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  width: 100%;
+  margin: 1rem 0 0.5rem 0;
+  background-color: var(--blue);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--mainText);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.todos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.todos .todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--background-content);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
+  /*padding: 0.5rem 1rem;*/
+}
+
+
+.todos .todo .half-items{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todos .todo .half-items .tag p {
+  white-space: nowrap;
+}
+
+.todo:hover {
+  background-color: var(--button-hover) ;
+}
+
+.todos .todo:nth-child(1){
+  border-radius: 5px 5px 0 0;
+}
+
+.todos .todo:last-child{
+  border-radius: 0 0 5px 5px;
+}
+
+.todos .todo .done {
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: var(--softText);
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+}
+
+.todos .todo .checked {
+  background-color: var(--green);
+}
+
+.todos .todo .name {
+  color: var(--mainText)
+}
+
+
+
+.delete{
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 3px;
+  background-color: transparent;
+}
+
+.delete img{
+  width: 25px;
+  height: 25px;
+  filter: invert(var(--inversion));
+}
+
+
+.todos .todo .tag{
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border: 1px solid var(--mainText);
+  border-radius: 5px;
+}
+
+.tag p{
+  margin:4px;
+  color: var(--mainText)
+
+}
+.user-msg{
+  color: var(--softText)
+}
+#register-link{
+  text-decoration: none;
+}
+#register-link:hover{
+  cursor: pointer;
+  color: var(--mainText);
+}
+
+.user-data-form-login {
+  width: 75%;
+}
+
+.user-data-form-register .controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .user-data-form-register .controls {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .user-data-form-login {
+    width: 100%;
   }
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+#birthdate:valid{
+  color: var(--mainText);
+}
+#birthdate:invalid{
+  color: var(--softText);
+}
+
+
+@media (max-width: 600px ) {
+  .todos .todo .half-items{
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .todo-infos{
+    flex-direction: row !important;
+  }
+
+  .todos .todo{
+    flex-direction: column;
+  }
+
+  .todos .todo .tag{
+    width: 100%;
+    text-align: center;
+  }
+
+  .todos .delete {
+    width: 100%;
+    border: 1px solid var(--mainText);
+    border-radius: 5px;
+    padding: 5px;
+  }
 }
