@@ -1,7 +1,63 @@
+import { useEffect, useState } from "react";
 import DeleteImg from "../../assets/images/delete.svg";
 import { Header } from "../../components/Header";
+// import { api } from "../../services/api";
+
+type Todo = {
+  id: Number;
+  checked: Boolean;
+  name: String;
+  tagName: String;
+}
+
+type TodoInput = {
+  name: String;
+  tag: String;
+}
+
+const data: Todo[] = [
+  {
+    id: 1,
+    checked: true,
+    name: 'Fazer trabalho',
+    tagName: 'UFRN'
+  },
+  {
+    id: 2,
+    checked: false,
+    name: 'Jogar lixo fora',
+    tagName: 'Casa'
+  },
+]
 
 export function Todo() {
+  const [todos, setTodos] = useState<Todo[]>([])
+
+  async function addTask(event: React.FormEvent<HTMLFormElement>){
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget);
+
+    const data = {
+      name: formData.get('name'),
+      tag: formData.get('tag')
+    };
+
+    console.log(data);
+  }
+
+  async function getTodos(){
+    // await api
+    // .get('/tasks')
+    // .then((response) => setTodos(response.data))
+    // .catch((error) => console.log(error))
+    setTodos(data);
+  }
+
+  useEffect(() => {
+    getTodos();
+  }, [])
+
   return (
     <div className="container">
       <Header />
@@ -9,7 +65,7 @@ export function Todo() {
       <h1>TODO LIST</h1>
 
       <div className="content">
-        <form>
+        <form onSubmit={addTask}>
           <div className="controls">
             <div className="control">
               <label>Nome</label>
@@ -36,35 +92,24 @@ export function Todo() {
         </form>
 
         <div className="todos">
-          <div className="todo">
-            <div className="half-items todo-infos">
-              <button className="done checked"></button>
-              <p className="name">Ir Pedalar</p>
-            </div>
-            <div className="half-items">
-              <div className="tag">
-                <p> Tag name </p>
+          {todos.map((todo) => {
+            return (
+              <div className="todo" key={todo.id.toString()}>
+              <div className="half-items todo-infos">
+                <button className={`done ${todo.checked ? 'checked' : ''}`}></button>
+                <p className="name">{todo.name}</p>
               </div>
-              <button className="delete">
-                <img src={DeleteImg} alt="delete" />
-              </button>
-            </div>
-          </div>
-
-          <div className="todo">
-            <div className="half-items todo-infos">
-              <button className="done"></button>
-              <p className="name">Fazer trabalho</p>
-            </div>
-            <div className="half-items">
-              <div className="tag">
-                <p> Tag name </p>
+              <div className="half-items">
+                <div className="tag">
+                  <p> {todo.tagName} </p>
+                </div>
+                <button className="delete">
+                  <img src={DeleteImg} alt="delete" />
+                </button>
               </div>
-              <button className="delete">
-                <img src={DeleteImg} alt="delete" />
-              </button>
             </div>
-          </div>
+            )
+          })}
         </div>
       </div>
     </div>
