@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Header() {
+  const { userIsLogged, handleLogOut } = useAuth()
+
   return (
     <header>
       <div>
@@ -10,7 +13,8 @@ export function Header() {
         <ul>  
             <li><Link to="/login">Entrar</Link></li>
             <li><Link to="/register">Registrar</Link></li>
-            <li><Link to="/login">Sair</Link></li>
+            {userIsLogged && 
+            <li onClick={handleLogOut} style={{cursor: 'pointer'}}>Sair</li>}
         </ul>
       </nav>
     </header>

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
 
@@ -18,14 +19,16 @@ export function Register() {
 
     api
       .post("/user", data)
-      .then((response) => {
-        navigate('/login')
+      .then(({data}) => {
+        if(data === true){
+          navigate('/login')
+          toast.success('Usuário cadastrado com sucesso');
+        }
       })
       .catch((error) => {
         console.log(error);
+        toast.error('Ocorreu algum problema ao tentar registrar usuário');
       });
-
-    console.log(data);
   }
 
   return (
