@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import DeleteImg from "../../assets/images/delete.svg";
 import { Header } from "../../components/Header";
+import { useAuth } from "../../hooks/useAuth";
 // import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 type Todo = {
   id: Number;
@@ -31,6 +33,8 @@ const data: Todo[] = [
 ]
 
 export function Todo() {
+  const navigate = useNavigate();
+  const { userIsLogged, user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([])
 
   async function addTask(event: React.FormEvent<HTMLFormElement>){
@@ -55,6 +59,10 @@ export function Todo() {
   }
 
   useEffect(() => {
+    if(!userIsLogged){
+      navigate('/login')
+    }
+
     getTodos();
   }, [])
 
@@ -62,7 +70,7 @@ export function Todo() {
     <div className="container">
       <Header />
 
-      <h1>TODO LIST</h1>
+      <h1>{user.name} - TODO LIST</h1>
 
       <div className="content">
         <form onSubmit={addTask}>

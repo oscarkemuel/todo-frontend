@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/Header";
-import { api } from "../../services/api";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Login() {
-  // const navigate = useNavigate();
+  const { handleLogin } = useAuth();
   
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -11,18 +11,11 @@ export function Login() {
     const formData = new FormData(event.currentTarget);
 
     const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
+      email: formData.get("email") as string,
+      password: formData.get("password") as string
     };
 
-    // api.post("/user/login", data).then((response) => {
-    //   console.log(response);
-    //   navigate('/');
-    // }).catch((error) => {
-    //   console.log(error);
-    // });
-
-    console.log(data);
+    handleLogin(data); 
   }
 
   return (

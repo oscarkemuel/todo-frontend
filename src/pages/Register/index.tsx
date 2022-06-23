@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { api } from "../../services/api";
 
 export function Register() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,15 +16,14 @@ export function Register() {
       password: formData.get("password"),
     };
 
-    // api
-    //   .post("/user", data)
-    //   .then((response) => {
-    //     navigate('/')
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     navigate('/login')
-    //   });
+    api
+      .post("/user", data)
+      .then((response) => {
+        navigate('/login')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     console.log(data);
   }
