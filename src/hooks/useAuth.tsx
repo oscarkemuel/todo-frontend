@@ -62,11 +62,10 @@ export function AuthProvider({ children }: AuthProviderProps){
 
             const user = JSON.parse(userStoragedData) as IUser;
 
-            setUser(user);
             api.defaults.headers = {
                 userid: `${user.id}`
             } as CommonHeaderProperties
-            navigate('/')
+            setUser(user);
         }
 
         getUserStoraged();
