@@ -2,35 +2,16 @@ import { useEffect, useState } from "react";
 import DeleteImg from "../../assets/images/delete.svg";
 import { Header } from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
-// import { api } from "../../services/api";
+import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
 type Todo = {
-  id: Number;
-  checked: Boolean;
-  name: String;
-  tagName: String;
+  id: number;
+  marked: number;
+  name: string;
+  tagName: string;
+  description: string;
 }
-
-type TodoInput = {
-  name: String;
-  tag: String;
-}
-
-const data: Todo[] = [
-  {
-    id: 1,
-    checked: true,
-    name: 'Fazer trabalho',
-    tagName: 'UFRN'
-  },
-  {
-    id: 2,
-    checked: false,
-    name: 'Jogar lixo fora',
-    tagName: 'Casa'
-  },
-]
 
 export function Todo() {
   const navigate = useNavigate();
@@ -44,18 +25,38 @@ export function Todo() {
 
     const data = {
       name: formData.get('name'),
-      tag: formData.get('tag')
+      description: formData.get('tag'),
+      tag: 'tag'
     };
 
-    console.log(data);
+    api
+    .post('/tasks', data)
+    .then((response) => {
+      console.log(response.data)
+      getTodos();
+    })
+    .catch((error) => console.log(error))
+  }
+
+  async function removeTask(taskId: number){
+    api
+    .delete(`tasks/${taskId}`)
+    .then((response) => getTodos())
+    .catch((error) => console.log(error))
+  }
+
+  async function toggleMarked(taskId: number){
+    api
+    .post(`/tasks/mark/${taskId}`)
+    .then((response) => getTodos())
+    .catch((error) => console.log(error));
   }
 
   async function getTodos(){
-    // await api
-    // .get('/tasks')
-    // .then((response) => setTodos(response.data))
-    // .catch((error) => console.log(error))
-    setTodos(data);
+    await api
+    .get('/tasks')
+    .then((response) => setTodos(response.data))
+    .catch((error) => console.log(error))
   }
 
   useEffect(() => {
@@ -104,14 +105,14 @@ export function Todo() {
             return (
               <div className="todo" key={todo.id.toString()}>
               <div className="half-items todo-infos">
-                <button className={`done ${todo.checked ? 'checked' : ''}`}></button>
+                <button className={`done ${todo.marked ? 'checked' : ''}`}></button>
                 <p className="name">{todo.name}</p>
               </div>
               <div className="half-items">
                 <div className="tag">
-                  <p> {todo.tagName} </p>
+                  <p> {todo.description} </p>
                 </div>
-                <button className="delete">
+                <button className="delete" onClick={() => removeTask(todo.id)}>
                   <img src={DeleteImg} alt="delete" />
                 </button>
               </div>

@@ -3,6 +3,11 @@ import { IUser } from '../types';
 import { api } from '../services/api';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { HeadersDefaults } from 'axios';
+
+interface CommonHeaderProperties extends HeadersDefaults {
+    userid: string;
+}
 
 interface ILoginData {
     email: string;
@@ -32,6 +37,9 @@ export function AuthProvider({ children }: AuthProviderProps){
         api.post("/user/login", data).then(async (response) => {
             setUser(response.data.data)
             localStorage.setItem("user", JSON.stringify(response.data.data));
+            api.defaults.headers = {
+                userid: response.data.data.id
+            } as CommonHeaderProperties
             navigate(`/tasks`);
         }).catch(() => {
             toast.error('Ocorreu algum problema ao tentar logar');
@@ -55,6 +63,9 @@ export function AuthProvider({ children }: AuthProviderProps){
             const user = JSON.parse(userStoragedData) as IUser;
 
             setUser(user);
+            api.defaults.headers = {
+                userid: `${user.id}`
+            } as CommonHeaderProperties
             navigate('/')
         }
 
