@@ -1,14 +1,16 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: import.meta.env.PROD 
+    ? "https://todo-backend-web.herokuapp.com/" 
+    : "http://localhost:3333",
 })
 
 api.interceptors.request.use(async (config) => {
   const userStoragedData = localStorage.getItem("user");
 
 
-  if(userStoragedData) {
+  if (userStoragedData) {
     const user = JSON.parse(userStoragedData);
     config.headers!.userid = user.id;
   }
