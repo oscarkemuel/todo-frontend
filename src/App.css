@@ -58,9 +58,13 @@ header a:hover {
 }
 
 
-h1 {
+h1, h2 {
   color: var(--mainText);
-  margin: 1rem 0;
+  font-size: 20px;
+}
+
+h1 {
+  margin-top: 1rem;
 }
 
 .container {
@@ -184,7 +188,11 @@ form input {
 }
 
 .todos .todo .name {
-  color: var(--mainText)
+  color: var(--mainText);
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 

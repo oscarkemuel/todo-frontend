@@ -9,13 +9,12 @@ type Todo = {
   id: number;
   marked: number;
   name: string;
-  tagName: string;
+  tag: string;
   description: string;
 };
 
 export function Todo() {
-  const navigate = useNavigate();
-  const { userIsLogged, user } = useAuth();
+  const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([]);
 
   async function addTask(event: React.FormEvent<HTMLFormElement>) {
@@ -45,6 +44,13 @@ export function Todo() {
       .catch((error) => console.log(error));
   }
 
+  async function updateTask(data: Todo) {
+    api
+      .put(`tasks/${data.id}`, {...data, tag: 'tag'})
+      .then((response) => getTodos())
+      .catch((error) => console.log(error));
+  }
+
   async function toggleMarked(taskId: number) {
     api
       .post(`/tasks/mark/${taskId}`)
@@ -67,7 +73,8 @@ export function Todo() {
     <div className="container">
       <Header />
 
-      <h1>{user.name} - TODO LIST</h1>
+      <h1>TODO LIST</h1>
+      <h2>Bem vindo(a), {user.name}</h2>
 
       <div className="content">
         <form onSubmit={addTask}>
@@ -107,7 +114,12 @@ export function Todo() {
                   >
                     <div></div>
                   </button>
-                  <p className="name">{todo.name}</p>
+                  <input
+                    className="name"
+                    type="text"
+                    defaultValue={todo.name}
+                    onBlur={(event) => updateTask({...todo, name: event.target.value})}
+                  />
                 </div>
                 <div className="half-items">
                   <div className="tag">
