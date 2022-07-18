@@ -17,6 +17,11 @@ export function Register() {
       password: formData.get("password"),
     };
 
+    if(formData.get("confirm_password") !== data.password) {
+      toast.error("Senhas distintas");
+      return;
+    }
+
     api
       .post("/user", data)
       .then(({data}) => {
@@ -26,8 +31,7 @@ export function Register() {
         }
       })
       .catch((error) => {
-        console.log(error);
-        toast.error('Ocorreu algum problema ao tentar registrar usuário');
+        toast.error(error.response.data.message);
       });
   }
 

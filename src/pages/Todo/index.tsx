@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import DeleteImg from "../../assets/images/delete.svg";
 import { Header } from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
@@ -34,35 +35,35 @@ export function Todo() {
         console.log(response.data);
         getTodos();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.response.data.message));
   }
 
   async function removeTask(taskId: number) {
     api
       .delete(`tasks/${taskId}`)
       .then((response) => getTodos())
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.response.data.message));
   }
 
   async function updateTask(data: Todo) {
     api
       .put(`tasks/${data.id}`, {...data, tag: 'tag'})
       .then((response) => getTodos())
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.response.data.message));
   }
 
   async function toggleMarked(taskId: number) {
     api
       .post(`/tasks/mark/${taskId}`)
       .then((response) => getTodos())
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.response.data.message));
   }
 
   async function getTodos() {
     await api
       .get("/tasks")
       .then((response) => setTodos(response.data))
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.response.data.message));
   }
 
   useEffect(() => {
