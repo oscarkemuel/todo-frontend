@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import {Aside} from "../../components/Aside";
 
 type Todo = {
   id: number;
@@ -75,7 +76,7 @@ export function Todo() {
 
       <h1>TODO LIST</h1>
       <h2>Bem vindo(a), {user.name}</h2>
-
+      <Aside/>
       <div className="content">
         <form onSubmit={addTask}>
           <div className="controls">

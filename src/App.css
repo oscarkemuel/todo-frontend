@@ -3,7 +3,7 @@
   --background-content: #24283E;
   --button-hover: #333854;
   --border-color: #35384b;
-  --softText: #88898d;
+  --softText: #97999d;
   --red: #E83E5A;
   --blue: #2760E5;
   --mainText: #FFFFFF;
@@ -46,6 +46,11 @@ header nav ul {
 header nav ul li {
   list-style: none;
   margin-left: 1rem;
+}
+
+header nav ul li:hover {
+  cursor:pointer;
+  color: var(--softText);
 }
 
 header a {
@@ -246,6 +251,53 @@ form input {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
+/* ------ ASIDE ---- */
+aside {
+  background-color: var(--background-content);
+  padding: 30px;
+  border-radius:4px;
+}
+.search{
+  color: var(--softText);
+  border-bottom: 2px solid var(--background);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.search .submit-btn{
+  width: 60%;
+}
+
+.search input{
+  border: 2px solid var(--background);
+  border-radius: 3px;
+}
+.tags ul{
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.tags li{
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--softText);
+}
+.tags li:hover{
+  color: var(--mainText);
+  cursor: pointer;
+}
+
+.tags h3{
+  text-align: center;
+  color: var(--mainText);
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+
 
 @media (max-width: 600px) {
   .user-data-form-register .controls {
