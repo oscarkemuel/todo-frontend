@@ -3,7 +3,6 @@ import DeleteImg from "../../assets/images/delete.svg";
 import { Header } from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 
 type Todo = {
   id: number;
@@ -16,6 +15,7 @@ type Todo = {
 export function Todo() {
   const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filterString, setFilterString] = useState('');
 
   async function addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -69,12 +69,17 @@ export function Todo() {
     getTodos();
   }, []);
 
+  const filteredTodos = todos.filter(todo => {
+    return todo.name.toLowerCase().includes(filterString.toLowerCase())
+      || todo.description.toLowerCase().includes(filterString.toLowerCase());
+  });
+
   return (
     <div className="container">
       <Header />
 
       <h1>TODO LIST</h1>
-      <h2>Bem vindo(a), {user.name}</h2>
+      <h2>Bem vindo(a), {user.name} 😃</h2>
 
       <div className="content">
         <form onSubmit={addTask}>
@@ -86,6 +91,7 @@ export function Todo() {
                 placeholder="Insira a tarefa"
                 id="name"
                 name="name"
+                required
               />
             </div>
 
@@ -96,6 +102,7 @@ export function Todo() {
                 placeholder="Insira a tag"
                 id="tag"
                 name="tag"
+                required
               />
             </div>
           </div>
@@ -103,8 +110,21 @@ export function Todo() {
           <input type="submit" value="ADD" className="submit-btn" />
         </form>
 
+        <form>
+          <div className="control">
+            <label>Filtro 🔍</label>
+            <input
+              type="text"
+              placeholder="Perquise for nome ou tag"
+              id="filter"
+              name="filter"
+              onChange={(event) => setFilterString(event.target.value)}
+            />
+          </div>
+        </form>
+
         <div className="todos">
-          {todos.map((todo) => {
+          {filteredTodos.map((todo) => {
             return (
               <div className="todo" key={todo.id.toString()}>
                 <div className="half-items todo-infos">
