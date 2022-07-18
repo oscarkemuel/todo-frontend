@@ -27,6 +27,12 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.main{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
 header {
   background-color: var(--background-content);
   color: var(--mainText);
@@ -80,11 +86,13 @@ h1 {
 }
 
 .content {
+  margin:auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 1rem;
+  padding-right:20px ;
   width: 100%;
   max-width: 600px;
   gap: 1rem;
@@ -254,10 +262,15 @@ form input {
 
 /* ------ ASIDE ---- */
 aside {
+  margin-left: 20px;
+  flex-basis: 15%;
+  margin-top: 100px;
+  height: 100%;
   background-color: var(--background-content);
   padding: 30px;
   border-radius:4px;
 }
+
 .search{
   color: var(--softText);
   border-bottom: 2px solid var(--background);
@@ -297,7 +310,7 @@ aside {
   margin-bottom: 10px;
 }
 
-
+/* -----ASIDE ----- */
 
 @media (max-width: 600px) {
   .user-data-form-register .controls {

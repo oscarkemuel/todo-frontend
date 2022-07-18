@@ -1,7 +1,7 @@
 
 export function Aside() {
     return (
-        <aside >
+        <aside className='aside' >
             <div className="search">
                 <p>Search your task</p>
                 <form>
