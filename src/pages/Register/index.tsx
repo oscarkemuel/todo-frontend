@@ -39,7 +39,7 @@ export function Register() {
     <div className="container">
       <Header />
 
-      <h1>Registration</h1>
+      <h1>Register</h1>
 
       <div className="content">
         <form className="user-data-form-register" onSubmit={handleSubmit}>

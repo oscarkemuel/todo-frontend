@@ -291,3 +291,11 @@ form input {
     padding: 5px;
   }
 }
+
+.no-todos p {
+  color: var(--softText);
+  font-size: 18px;
+  text-align: center;
+  padding: 1rem;
+  text-decoration: underline;
+}

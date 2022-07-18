@@ -125,6 +125,11 @@ export function Todo() {
         </form>
 
         <div className="todos">
+          {!filteredTodos.length && (
+            <div className="no-todos">
+              <p>Nenhuma tarefa encontrada!!!</p>
+            </div>
+          )}
           {filteredTodos.map((todo) => {
             return (
               <div className="todo" key={todo.id.toString()}>

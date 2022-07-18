@@ -14,8 +14,8 @@ export function Header() {
                     {userIsLogged
                         ?<li onClick={handleLogOut} style={{cursor: 'pointer'}}>Sair</li>
                         :<>
-                            <li><Link to="/login">Entrar</Link></li>
-                            <li><Link to="/register">Registrar</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/register">Register</Link></li>
                         </>}
                 </ul>
             </nav>
